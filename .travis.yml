@@ -1,4 +1,4 @@
-<code class="language-yum hljs http">language: node_js
+language: node_js
 node_js: stable
  
 # S: Build Lifecycle
@@ -27,4 +27,4 @@ branches:
     - master
 env:
  global:
-   - GH_REF: github.com/Dawnstar8411/Dawnstar8411.github.io.git</code>
+   - GH_REF: github.com/Dawnstar8411/Dawnstar8411.github.io.git
