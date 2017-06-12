@@ -1,0 +1,30 @@
+<code class="language-yum hljs http">language: node_js
+node_js: stable
+ 
+# S: Build Lifecycle
+install:
+  - npm install
+ 
+ 
+#before_script:
+ # - npm install -g gulp
+ 
+script:
+  - hexo g
+ 
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "Dawnstar8411"
+  - git config user.email "dawnstar8411@163.com"
+  - git add .
+  - git commit -m "update blog"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+# E: Build LifeCycle
+ 
+branches:
+  only:
+    - master
+env:
+ global:
+   - GH_REF: github.com/Dawnstar8411/Dawnstar8411.github.io</code>
