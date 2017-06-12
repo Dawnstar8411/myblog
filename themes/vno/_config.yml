@@ -1,0 +1,31 @@
+menu:
+  #Archives: /archives
+  读书: /favourite
+  时光机: /favourite/time.html
+  关于我: /aboutme
+description: 
+social:
+  weibo: 
+  github: https://github.com/Dawnstar8411
+  stack_overflow: 
+  facebook: 
+  twitter: 
+  google_plus: 
+
+page_comment: true
+logo: /images/avatar.jpg
+background:
+  cover: /images/background-cover.jpg
+  color: cover-purple
+
+archive_date_format: MMM DD
+fancybox: true
+
+duoshuo_shortname: 
+
+google_analytics: 
+baidu_tongji: 20398798e21b5b356533c5ed935ed80e
+favicon: /images/avatar-small.jpg
+
+#mathjax
+mathjax: true
