@@ -6,18 +6,16 @@ commmet: true
 
 #### 📖2017 计划
 {% readStream %}
-{% readItems //dawnstar8411.com/2017/06/13/hello-world/  //dawnstar8411.com/source/images/book/life.jpg 早晨从中午开始 2017-05-29 %}
-
-
+{% readItems //dawnstar8411.com/2017/06/13/hello-world/  http://orgcw8pd8.bkt.clouddn.com/life.jpg 早晨从中午开始 2017-05-29 %}
 
 {% endreadStream %}
 
 #### 📖2017 已读
 {% readStream %}
 
-{% readItems //dawnstar8411.com/2017/06/13/hello-world/ //dawnstar8411.com/source/images/book/life,jpg  生活十讲 2017-05-26 %}
+{% readItems //dawnstar8411.com/2017/06/13/hello-world/ http://orgcw8pd8.bkt.clouddn.com/life.jpg  生活十讲 2017-05-26 %}
 
-{% readItems //dawnstar8411.com/2017/06/13/hello-world/  //dawnstar8411.com/source/images/book/morning.jpg 早晨从中午开始 2017-05-29 %}
+{% readItems //dawnstar8411.com/2017/06/13/hello-world/  http://orgcw8pd8.bkt.clouddn.com/morning.jpg 早晨从中午开始 2017-05-29 %}
 
 
 
@@ -26,9 +24,9 @@ commmet: true
 >MOVIES 
 
 {% readStream %}
-{% readItems //dawnstar8411.com/2017/06/13/hello-world/  //dawnstar8411.com/source/images/movie/her.jpg Her %}
+{% readItems //dawnstar8411.com/2017/06/13/hello-world/  http://orgcw8pd8.bkt.clouddn.com/her.jpg Her %}
 
-{% readItems //dawnstar8411.com/2017/06/13/hello-world/  //dawnstar8411.com/source/images/movie/one-day.jpg One Day %}
+{% readItems //dawnstar8411.com/2017/06/13/hello-world/  http://orgcw8pd8.bkt.clouddn.com/one-day.jpg One Day %}
 
 {% endreadStream %}
 s
