@@ -4,7 +4,6 @@ commmet: true
 ---
 >BOOKS 
 
-#### 📖2017
 {% readStream %}
 {% readItems //dawnstar8411.com/2017/06/13/hello-world/ http://orgcw8pd8.bkt.clouddn.com/one-day.jpg  生活十讲 2017-05-26 %}
 
