@@ -17,8 +17,8 @@ after_script:
   - git init
   - git config user.name "Dawnstar8411"
   - git config user.email "dawnstar8411@163.com"
-  - touch CNAME
-  - echo "www.dawnstar8411.com" >CNAME
+# - touch CNAME
+# - echo "www.dawnstar8411.com" >CNAME
   - git add .
   - git commit -m "update blog"
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
