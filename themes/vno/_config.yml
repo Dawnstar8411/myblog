@@ -15,7 +15,7 @@ social:
 page_comment: true
 logo: /images/avatar.jpg
 background:
-  cover: /images/background-cover.jpg
+  cover: /images/background-rain.jpg
   color: cover-purple
 
 archive_date_format: MMM DD
