@@ -14,6 +14,7 @@ tags:
 - CUDA 8.0
 - cuDNN 5.1
 - opencv 3.1.0
+- caffe
 - caffe2
 - Theano
 - Keras
@@ -340,6 +341,78 @@ sudo ldconfig
 # if !defined(HAVE_CUDA) || defined(CUDA_DISABLER) || (CUDA_VERSION>=8000)
 ```
 - **Note:** 编译中间会有一个ICV的文件下载的很慢，或者会校验错误。在网上下载相应的文件，拷贝到`～/opencv/3rdparty/ippicv/downloads/linux-808b791a6eac9ed78d32a7666804320e`目录下即可
+
+### Caffe（Python2.7版本）
+- 安装之前需要先安装一些依赖项
+```
+ libfreetype6-dev  libpng12-dev libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler  libboost-all-dev libgflags-dev libgoogle-glog-dev liblmdb-dev g++ 
+```
+- 从github克隆
+```
+https://github.com/BVLC/caffe.git
+cd caffe
+cp Makefile.config.example Makefile.config
+```
+- 修改Makefile.config文件`gksu gedit Makefile.config`
+	- **`USE_CUDNN := 1`**  使用cudnn
+	- **`OPENCV_VERSION := 3`** 使用opencv3.1.0版本
+	- **`CUDA_DIR := /usr/local/cuda`** CUDA路径
+	- **`BLAS := open`** 使用openBLAS版本
+	- **`BLAS_INCLUDE := /usr/local/include`** BLAS路径
+    - **`BLAS_LIB := usr/local/lib`**
+	- **`MATLAB_DIR := /usr/local/matlab`** matlab 路径
+	- **`PYTHON_INCLUDE := /usr/include/python2.7 \`
+		`/usr/lib/python2.7/dist-packages/numpy/core/include`** 
+	- **`PYTHON_LIB := /usr/lib`**
+	- **` WITH_PYTHON_LAYER := 1`**
+	- **`INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial/`**
+    - **`LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu/hdf5/serial/`**
+	- **` USE_PKG_CONFIG := 1`**
+	- **`BUILD_DIR := build`**
+    - **`DISTRIBUTE_DIR := distribute`**
+	- **`TEST_GPUID := 0`**
+	- **`Q ?= @`**
+- 安装需要的包，编译源码
+```
+sudo pip2 install -r python/requirements.txt
+make all -j8
+make test -j8
+make runtest -j8
+```
+- 编译pycaffe，作为caffe的Python接口
+```
+make pycaffe -j8
+```
+- 把caffe中和python 相关的内容的路劲刚添加到python的编译路径中
+```
+echo `export PYTHONPATH=(path/to/caffe)/python:$PYTHONPATH` >> ~/.bashrc
+source ~/.bashrc
+```
+
+#### 编译caffe时可能出现的问题
+- 为hdf5相关文件创建新的链接
+	找到`libhdf_serial.so.10.1.0`所在的文件夹，建立两个链接`sudo ln -s libhdf5_serial.so.10.1.0 libhdf5.so`和 `sudo ln -s libhdf5_serial_hl.so.10.0.2 libhdf5_hl.so`
+- 找不到 hdf5.h , hdf5_hl.h
+	使用命令`sudo find /-name hdf5.h`和`sudo find / -name hdf5_hl.h`找到相应路径之后，把路径加到Makefile.config中。在"INCLUDE_DIRS"中添加`/usr/include/hdf5/serial/`
+- 找不到libhdf5.so
+	使用命令`sudo find / -name libhdf5.so`，找到路径后，为Makefile.config 中的"LIBRARY_DIRS"添加`/usr/lib/x86_64-linux-gnu/hdf5/serial/`
+- 由于gcc版本太新导致的问题：在Makefile中搜索并替换
+```
+NVCCFLAGS += -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS) 
+
+NVCCFLAGS += -D_FORCE_INLINES -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS) 
+
+```
+- usr/bin/ld: 找不到 -lippicv
+	在opencv 中找到libippicv.a文件，将其复制到`/usr/local/lib`目录下
+- 在Python中验证
+```
+python
+>>> import caffe
+>>> exit()
+```
+
+
 
 
 ### Caffe2（Python2.7版本）
